@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task11</title>
+
+    <style>
+        button {
+            width: 80px;
+            height: 25px;
+            font-size: large;
+        }
+        label {
+            width: 70px;
+            display: inline-block;
+        }
+        .formerror {
+            color: red;
+            font-size: large;
+            margin-left: 10px;
+        }
+    </style>
+
+</head>
+
+<body style="display: flex; justify-content: center; margin-top: 15%;">
+
+    <div class="container">
+        <form action="/aspirine.php" name="myForm" onsubmit="return validate()" method="post">
+
+            <div id="name">
+                Name:<input type="text" name="fname"><span class="formerror"></span>
+            </div>
+            <br>
+
+            <div id="email">
+                Email:<input type="email" name="femail"><span class="formerror"></span>
+            </div>
+            <br>
+
+            <div id="url">
+                Website:<input type="url" name="furl"><span class="formerror"></span>
+            </div>
+            <br>
+
+            <div id="msg">
+                Message:<textarea name="fmsg" cols="30" rows="5"></textarea><span class="formerror"></span>
+            </div>
+            <br>
+
+            <div>
+                <input class="but" type="submit" value="Submit">
+            </div>
+
+
+        </form>
+    </div>
+
+    <script>
+        function clearError() {
+            errors = document.getElementsByClassName('formerror');
+            for (let item of errors) {
+                item.innerHTML = "";
+            }
+        }
+        function seterror(id, error) {
+            element = document.getElementById(id);
+            element.getElementsByClassName('formerror')[0].innerHTML = error;
+        }
+        function validate() {
+            var returnval = true;
+            clearError();
+
+            var name = document.forms['myForm']["fname"].value;
+            if (name.length == 0) {
+                seterror("name", "This field is required");
+                document.forms['myForm']["fname"].style.border = "2px solid red";
+                returnval = false;
+            }
+
+            var email = document.forms['myForm']["femail"].value;
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (email.match(validRegex)) {
+                returnval = true;
+            } else {
+                seterror("email", "A valid email address is required");
+                document.forms['myForm']["femail"].style.border = "2px solid red";
+                returnval = false;
+            }
+
+            var url = document.forms['myForm']["furl"].value;
+                    var res = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+                    if (url.match(res)) {
+                         returnval = true;
+                    }else{
+                        seterror("url", "A valid url is required");
+                        document.forms['myForm']["furl"].style.border = "2px solid red";
+                        returnval = false;
+                    }
+
+            var message = document.forms['myForm']["fmsg"].value;
+            if (message.length == 0) {
+                seterror("msg", "This field is required");
+                document.forms['myForm']["fmsg"].style.border = "2px solid red";
+                returnval = false;
+            }
+
+
+            return returnval;
+        }
+    </script>
+</body>
+
+</html>

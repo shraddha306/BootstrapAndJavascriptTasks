@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task10</title>
+</head>
+<style>
+    .container{
+        margin-top: 20%;
+    }
+    .date, .time{
+        font-size: larger;
+    }
+    #dateinp, #timeinp{
+        font-size: large;
+        width: 100px;
+        height: 30px;
+        border-radius: 6px;
+    }
+</style>
+<body>
+    <center>
+        <div class="container">
+            <form>
+                <div class="date">
+                    <input type="button" value="Show date" id="dateinp" onclick="showdate()">
+                    <p id="date"></p>
+                </div>
+                <div class="time">
+                    <input type="button" value="Show time" id="timeinp" onclick="showtime()">
+                    <p id="time"></p>
+                </div>
+            </form>
+        </div>
+    </center>
+    
+    
+    
+    
+    <script>
+        // function showdate()
+        // {
+        //     document.getElementById("date").innerHTML = getMonth();
+        // }
+        function showdate() { 
+            var in_date = new Date();
+            var date =in_date.getDate() +'/'+(in_date.getMonth()+1)+'/'+in_date.getFullYear()
+            document.getElementById('date').innerHTML=date
+}
+        function showtime()
+        {
+            document.getElementById("time").innerHTML = Date();
+        }
+    </script>
+</body>
+</html>

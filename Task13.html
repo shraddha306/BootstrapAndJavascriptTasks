@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task13</title>
+    <style>
+        body{
+            margin: 0;
+            border: 0;
+        }
+        .container{
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            position: absolute;
+            text-align: center;
+        }
+        .container p{
+            color: blue;
+            font-size: 30px;
+            font-weight: 600;
+            
+        }
+        .container button{
+            height: 27px;
+            width: 53px;
+            font-size: larger;
+        }
+
+    </style>
+</head>
+<body>
+    
+        <div class="img">
+            <img id="myImage" src="train.png" alt="train image is loading...">
+        </div>
+        <div class="container">
+            <p>Click the following buttons to handel the animation</p>
+            <button onclick="moveRight()">Start</button>
+            <button onclick="stop()">Stop</button>
+        </div>
+
+   <script>
+    var imgObj = null;
+            var animate ;
+            
+            function init() {
+               imgObj = document.getElementById('myImage');
+               imgObj.style.position= 'relative'; 
+               imgObj.style.left = '0%'; 
+            }
+            function moveRight() {
+               imgObj.style.left = parseInt(imgObj.style.left) + 1 + '%';
+            //    let imgpos = imgObj.style.left;
+               animate = setTimeout(moveRight,60);    
+            }
+            function stop() {
+               clearTimeout(animate);
+            //    imgObj.style.left = imgpos;
+             imgObj.style.left = '0%';
+            }
+            
+            window.onload = init;
+   </script>
+</body>
+</html>

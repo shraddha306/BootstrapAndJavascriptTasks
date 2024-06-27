@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task14 Prototype</title>
+
+    <style>
+        .formerror {
+            color: red;
+            font-size: large;
+            margin-left: 10px;
+        }
+        .box {
+            padding-top: 0;
+            padding: 20px;
+            width: max-content;
+            height: max-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-image: linear-gradient(180deg, rgb(255, 253, 151), rgb(250, 131, 217));
+        }
+        .heading {
+            margin: 3px;
+        }
+        div label {
+            width: 121px;
+            display: inline-block;
+        }
+
+        .inp {
+            width: 330px;
+        }
+
+        .pad {
+            padding: 3px;
+        }
+
+        tr button {
+            background-color: red;
+            color: white;
+            border-radius: 20px;
+            width: 100px;
+        }
+
+        .formerror {
+            color: red;
+            font-size: medium;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="heading" align="center">
+            <h1>Registration form</h1>
+        </div>
+
+        <div class="box">
+            <table>
+                <form action="/aspirine.php" name="myForm" onsubmit="return validateForm()" method="post">
+                    <tr>
+                        <td class="pad" align="right"><label for="#">First Name</label></td>
+                        <td class="pad" align="left" id="name"><input name="fname" class="inp" type="text"><span
+                                class="formerror"></span></td>
+                    </tr>
+    
+                    <tr>
+                        <td class="pad" align="right"><label for="#">Last Name</label></td>
+                        <td class="pad" align="left" id="lname"><input type="text" name="lname" class="inp"><span
+                                class="formerror"></span></td>
+                    </tr>
+
+                    <tr class="tr">
+                        <td class="pad" align="right"><label for="#">Email</label></td>
+                        <td class="pad" align="left" id="email"><input name="femail" class="inp" type="email"><span
+                                class="formerror"></span></td>
+                    </tr>
+    
+                    <tr class="tr">
+                        <td class="pad" align="right"><label for="#">Password</label></td>
+                        <td class="pad" align="left" id="pass"><input name="fpass" class="inp" type="password"><span
+                                class="formerror"></span></td>
+                    </tr>
+    
+                    <tr class="tr">
+                        <td class="pad" align="right"><label for="#">Re-enter Password</label></td>
+                        <td class="pad" align="left" id="cpass"><input name="fcpass" class="inp" type="password"><span
+                                class="formerror"></span></td>
+                    </tr>
+    
+                    <tr class="tr">
+                        <td class="pad" align="right"><label for="#">Gender</label></td>
+                        <td class="pad" align="left"><input type="radio" name="MF">Male
+                            <br><input type="radio" name="MF">Female
+                        </td>
+                    </tr>
+    
+                    <tr class="tr">
+                        <td class="pad" align="right"><label for="#">Age</label></td>
+                        <td class="pad" align="left" id="age"><input name="fage" class="inp" type="number"><span
+                                class="formerror"></span></td>
+                    </tr>
+    
+                    <tr class="tr">
+                        <td class="pad" align="right"><label for="#">Phone Number</label></td>
+                        <td class="pad" align="left" id="phone"><input name="fphone" class="inp" type="tel"><span
+                                class="formerror"></span></td>
+                    </tr>
+    
+                    <tr class="tr" style="align-items: center;">
+                        <td class="pad" align="right"><label for="#">Address</label></td>
+                        <td class="pad" align="left" id="add"><textarea name="fadd" class="inp" name="address"
+                                id="address" cols="20" rows="5"></textarea><span class="formerror"></span></td>
+                    </tr>
+    
+                    <tr class="tr">
+                        <td align="right"><label for="#">Country</label></td>
+                        <td class="pad" align="left"><select name="language">
+                                <option value="#">Choose your country</option>
+                                <option value="ind">India</option>
+                                <option value="kor">Korea</option>
+                                <option value="jap">Japan</option>
+                                <option value="chi">China</option>
+                            </Select></td>
+                    </tr>
+    
+                    <tr class="tr">
+                        <td class="pad" align="right"><label for="#">Languages known</label></td>
+                        <td class="pad" align="left"><input type="checkbox">English
+                            <input type="checkbox">Kanada
+                            <input type="checkbox">Hindi
+                            <input type="checkbox">Telugu
+                        </td>
+                    </tr>
+    
+                    <tr class="tr">
+                        <td class="pad" colspan="2" align="left">
+                            <input type="checkbox" checked>Hereby I declare all the given details are true
+                        </td>
+                    </tr>
+    
+                    <tr class="tr" colspan="2">
+                        <td align="right" colspan="2">Log in <span><a href="#"
+                                    style="text-decoration: none;">Ethnus</a></span> website</td>
+                    </tr>
+    
+                    <tr class="tr">
+                        <td align="center" colspan="2"><input class="but" type="submit" value="Submit"></td>
+                    </tr>
+                </form>
+            </table>
+        </div>
+        
+    </div>
+
+    <script>
+        function clearErrors() {
+
+            errors = document.getElementsByClassName('formerror');
+            for (let item of errors) {
+                item.innerHTML = "";
+            }
+        }
+
+        function seterror(id, error) {
+            element = document.getElementById(id);
+            element.getElementsByClassName('formerror')[0].innerHTML = error;
+
+        }
+
+        function validateForm() {
+            var returnval = true;
+            clearErrors();
+
+            var name = document.forms['myForm']["fname"].value;
+            if (name.length < 5) {
+                seterror("name", "POOR");
+                returnval = false;
+            }
+
+            var lname = document.forms['myForm']["lname"].value;
+            if (lname.length < 5) {
+                seterror("lname", "POOR")
+                returnval = false;
+            }
+
+            var password = document.forms['myForm']["fpass"].value;
+            if (password.length < 5) {
+                seterror("pass", "POOR");
+                returnval = false;
+            }
+
+            var cpassword = document.forms['myForm']["fcpass"].value;
+            if (cpassword != password) {
+                seterror("cpass", "POOR OR MISMATCH");
+                returnval = false;
+            }
+
+            var age = document.forms['myForm']["fage"].value;
+            if (age < 10) {
+                seterror("age", "POOR");
+                returnval = false;
+            }
+
+            var phone = document.forms['myForm']["fphone"].value;
+            if (phone.length != 10) {
+                seterror("phone", "POOR");
+                returnval = false;
+            }
+
+            var address = document.forms['myForm']["fadd"].value;
+            if (address.length < 5) {
+                seterror("add", "POOR");
+                returnval = false;
+            }
+            var email = document.forms['myForm']["femail"].value;
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (email.match(validRegex)) {
+                returnval = true;
+
+            } else {
+                seterror("email", "POOR")
+                returnval = false;
+
+            }
+
+            return returnval;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task12</title>
+    <script src="https://kit.fontawesome.com/296cc0264e.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            border: 0;
+        }
+
+        .container {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .login-box {
+            width: 360px;
+            height: 350px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 1px 2px rgb(196, 196, 196);
+            background-color: rgb(249, 249, 249);
+            border-radius: 3px;
+        }
+
+        .btn {
+            width: 286px;
+            height: 40px;
+            padding: 5px;
+            font-size: large;
+            background-color: rgb(67, 123, 244);
+            border-collapse: collapse;
+            border-radius: 3px;
+            color: white;
+            font-weight: 300;
+        }
+
+        .textbox {
+            width: 100%;
+            overflow: hidden;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .textbox input {
+            width: 240px;
+            height: 30px;
+            padding: 5px;
+            font-size: large;
+            border-collapse: collapse;
+        }
+
+        .textbox i {
+            border-collapse: collapse;
+            background-color: aliceblue;
+
+        }
+
+        .signup {
+            text-align: center;
+        }
+
+        .check {
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .check input {
+            position: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h1><i>Instagram</i></h1>
+
+            <div class="textbox">
+                <i class="fa-solid fa-user" style="color: #5d5e5f;"></i> <input type="text" placeholder="Username">
+
+            </div>
+
+            <div class="textbox">
+                <i class="fa-solid fa-lock" style="color: #5d5e5f;"></i> <input type="password" placeholder="Password">
+            </div>
+
+            <input type="button" class="btn" value="Log in">
+
+            <div class="check">
+                <input type="checkbox"> Remember me
+                <a href="#" style="text-decoration: none;">Forgot Password?</a>
+            </div>
+        </div>
+
+        <div class="signup">
+            <p>Don't have an account! <span><a href="#">Sign up here</a></span>.</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
